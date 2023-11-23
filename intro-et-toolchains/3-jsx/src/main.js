@@ -1,18 +1,8 @@
-function App() {
-  const name = 'Romain';
-  const date = new Date();
-
-  return (
-    <>
-      <p>Hello {name}</p>
-      <p>It is {date.toLocaleTimeString()}</p>
-    </>
-  );
-}
+import App from "./App.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(App());
+root.render(<App />);
 
 setInterval(() => {
-  root.render(App());
+  root.render(<App />);
 }, 1000);

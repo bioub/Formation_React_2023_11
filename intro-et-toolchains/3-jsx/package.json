@@ -9,6 +9,6 @@
     "@babel/preset-react": "^7.22.15"
   },
   "scripts": {
-    "build": "babel src -d build"
+    "build": "babel src -d dist"
   }
 }
