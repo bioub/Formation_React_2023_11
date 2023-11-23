@@ -18,7 +18,7 @@ function App() {
       </form>
       <div className="todos-container">
         {todos.map((todo) => (
-          <TodoItem todo={todo} isEditing={todo._id === editingId} />
+          <TodoItem key={todo._id} todo={todo} isEditing={todo._id === editingId} />
         ))}
       </div>
     </div>
