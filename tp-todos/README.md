@@ -123,3 +123,24 @@ const editingId = 'dfgfg35335';
 ```
 
 Transformer le JSX de `App` pour qu'il dépende de ces variables
+
+## Event et State
+
+Modifier `App` de sorte à ce que `todos` soit défini dans un state (avec `useState`)
+
+Ajouter un nouveau state `newTodo` (avec en valeur par défaut `'ABC'`) et passer `newTodo` à la propriété `value` de `<input type="text" className="todos-new-input" />`
+
+Ecouter ensuite avec `onChange` le changement de valeur dans le champ et stocker dans le state `newTodo` (avec `setNewTodo`) la valeur venant de `event.target.value` (cf slide 82)
+
+Au submit du formulaire (`onSubmit`), appeler `event.preventDefault()` pour désactiver le comportement par défaut du navigateur (qui nous emmènerait vers la page de résultat).
+
+Puis utiliser `setTodos` dans le `handleSubmit` pour ajouter un nouvel élement au tableau en s'inspirant du code suivant :
+
+```
+setTodos(
+  [
+    ...todos,
+    { /*  un object avec 3 clés : _id (Math.random().toString()), title (la valeur qui venait du champ) et completed  */ }
+  ]
+)
+```
