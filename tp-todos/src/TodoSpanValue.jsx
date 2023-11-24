@@ -1,7 +1,7 @@
-function TodoSpanValue() {
+function TodoSpanValue({ value }) {
   return (
     <span className="TodoSpanValue">
-      ABC
+      {value}
     </span>
   );
 }

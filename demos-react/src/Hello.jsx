@@ -6,3 +6,5 @@ function Hello({ name, age, active }) {
     </div>
   );
 }
+
+export default Hello;
