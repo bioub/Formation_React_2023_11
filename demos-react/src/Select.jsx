@@ -1,14 +1,35 @@
+import { useEffect, useRef, useState } from 'react';
+
 function Select({ items, value, onChange }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const selectRef = useRef();
+
+  useEffect(() => {
+    const listener = (event) => {
+      if (!selectRef.current?.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('click', listener);
+    return () => {
+      window.removeEventListener('click', listener);
+    };
+  }, []);
+
   return (
-    <div className="Select">
-      <div className="selection">{value}</div>
-      <div className="menu">
-        {items.map((item) => (
-          <div key={item} onClick={() => onChange(item)}>
-            {item}
-          </div>
-        ))}
+    <div ref={selectRef} className="Select">
+      <div className="selection" onClick={() => setMenuOpen(!menuOpen)}>
+        {value}
       </div>
+      {menuOpen && (
+        <div className="menu">
+          {items.map((item) => (
+            <div key={item} onClick={() => onChange(item)}>
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
