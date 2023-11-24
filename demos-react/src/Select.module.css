@@ -1,0 +1,13 @@
+.selection {
+  user-select: none;
+  border: 1px solid navy;
+  padding: 4px;
+}
+
+.menu {
+  border: 1px solid navy;
+}
+
+.menu > div {
+  padding: 4px;
+}

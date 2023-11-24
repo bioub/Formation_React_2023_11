@@ -1,3 +1,4 @@
+import styles from './Select.module.css';
 import { useEffect, useRef, useState } from 'react';
 
 function Select({ items, value, onChange }) {
@@ -18,11 +19,11 @@ function Select({ items, value, onChange }) {
 
   return (
     <div ref={selectRef} className="Select">
-      <div className="selection" onClick={() => setMenuOpen(!menuOpen)}>
+      <div className={styles.selection} onClick={() => setMenuOpen(!menuOpen)}>
         {value}
       </div>
       {menuOpen && (
-        <div className="menu">
+        <div className={styles.menu}>
           {items.map((item) => (
             <div key={item} onClick={() => onChange(item)}>
               {item}
