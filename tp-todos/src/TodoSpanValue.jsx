@@ -1,7 +1,7 @@
-function TodoSpanValue({ value }) {
+function TodoSpanValue({ todo, onEditingIdChange }) {
   return (
-    <span className="TodoSpanValue">
-      {value}
+    <span className="TodoSpanValue" onDoubleClick={() => onEditingIdChange(todo._id)}>
+      {todo.title}
     </span>
   );
 }

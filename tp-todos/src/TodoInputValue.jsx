@@ -1,6 +1,6 @@
-function TodoInputValue() {
+function TodoInputValue({ todo, onTodoEdit }) {
   return (
-    <input type="text" className="todosInputValue" value="ABC" />
+    <input type="text" className="todosInputValue" value={todo.title} onChange={(e) => onTodoEdit({...todo, title: e.target.value})} />
   );
 }
 

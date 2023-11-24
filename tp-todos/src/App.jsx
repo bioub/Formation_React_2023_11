@@ -9,7 +9,7 @@ function App() {
     { _id: 'dfgfg35335', title: 'XYZ', completed: false },
   ]);
   const [value, setValue] = useState('ABC');
-  const editingId = 'dfgfg35335';
+  const [editingId, setEditingId] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +18,21 @@ function App() {
       { _id: Math.random().toString(), title: value, completed: false },
     ]);
     setValue('');
+  }
+
+  function handleTodoDelete(todoToDelete) {
+    setTodos(todos.filter((todo) => todo._id !== todoToDelete._id));
+  }
+
+  function handleEditingIdChange(todoId) {
+    setEditingId(todoId);
+  }
+
+  function handleTodoEdit(newTodo) {
+    // stocker dans le tableau todos du state
+    setTodos(
+      todos.map((todo) => todo._id === newTodo._id ? newTodo : todo)
+    )
   }
 
   return (
@@ -29,7 +44,7 @@ function App() {
       </form>
       <div className="todos-container">
         {todos.map((todo) => (
-          <TodoItem key={todo._id} todo={todo} isEditing={todo._id === editingId} />
+          <TodoItem key={todo._id} todo={todo} isEditing={todo._id === editingId} onTodoDelete={handleTodoDelete} onEditingIdChange={handleEditingIdChange} onTodoEdit={handleTodoEdit} />
         ))}
       </div>
     </div>

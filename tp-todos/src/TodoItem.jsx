@@ -1,20 +1,21 @@
 import TodoInputValue from './TodoInputValue';
 import TodoSpanValue from './TodoSpanValue';
 
-function TodoItem({ todo, isEditing = false }) {
+function TodoItem({ todo, isEditing = false, onTodoDelete, onEditingIdChange, onTodoEdit }) {
   return (
     <div className="TodoItem" data-todo-id={todo._id}>
       <input
         type="checkbox"
         className="todosCompleted"
         checked={todo.completed}
+        onChange={(e) => onTodoEdit({...todo, completed: e.target.checked})}
       />
       {!isEditing ? (
-        <TodoSpanValue value={todo.title} />
+        <TodoSpanValue todo={todo} onEditingIdChange={onEditingIdChange} />
       ) : (
-        <TodoInputValue value={todo.title} />
+        <TodoInputValue todo={todo} onEditingIdChange={onEditingIdChange} onTodoEdit={onTodoEdit} />
       )}
-      <button className="todosDeleteBtn">-</button>
+      <button className="todosDeleteBtn" onClick={() => onTodoDelete(todo)}>-</button>
     </div>
   );
 }
